@@ -1,0 +1,4 @@
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+}
