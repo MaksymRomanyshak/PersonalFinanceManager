@@ -1,7 +1,8 @@
 import { Button } from "react-bootstrap";
 
-const CategoryItem = ({ category }) => {
-  const { name, body, value, date } = category;
+const CategoryItem = ({ category, deleteData }) => {
+  const { _id, name, body, value, date } = category;
+
   return (
     <tbody>
       <tr>
@@ -12,7 +13,14 @@ const CategoryItem = ({ category }) => {
         <td>{date}</td>
         <td style={{ display: "flex", justifyContent: "space-evenly" }}>
           <Button variant="outline-dark">Edit</Button>
-          <Button variant="outline-dark">Delete</Button>
+          <Button
+            onClick={() => {
+              deleteData(_id);
+            }}
+            variant="outline-dark"
+          >
+            Delete
+          </Button>
         </td>
       </tr>
     </tbody>

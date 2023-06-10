@@ -1,6 +1,15 @@
 //Model
 const Data = require("../models/data");
 
+exports.deleteData = (req, res) => {
+  const elementId = req.params.id;
+  Data.findByIdAndDelete(elementId)
+    .then((result) => {
+      res.json({ result });
+    })
+    .catch((err) => console.log(err));
+};
+
 exports.newData = (req, res) => {
   const data = new Data(req.body);
   data
@@ -16,8 +25,8 @@ exports.newData = (req, res) => {
 exports.findData = (req, res) => {
   Data.find()
     .select("_id name body value date")
-    .then((data) => {
-      res.json(data.reverse());
+    .then((result) => {
+      res.json(result.reverse());
     })
     .catch((err) => console.log(err));
 };
