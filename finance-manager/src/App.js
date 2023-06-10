@@ -17,6 +17,7 @@ class App extends Component {
       body: "",
       value: "",
       posts: [],
+      searchField: "",
     };
   }
 

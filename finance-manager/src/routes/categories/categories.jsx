@@ -12,7 +12,7 @@ const Categories = ({ state, updateState, getData, deleteData }) => {
         updateState={updateState}
         getData={getData}
       />
-      <SearchCategoryInput state={state} />
+      <SearchCategoryInput state={state} updateState={updateState} />
       <ExpensesTable state={state} deleteData={deleteData} />
     </Fragment>
   );
