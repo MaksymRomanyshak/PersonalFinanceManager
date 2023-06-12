@@ -1,3 +1,7 @@
+h3 {
+  margin: 0% 0% 1% 0%;
+}
+
 .transactions-list {
   display: flex;
   flex-direction: column;

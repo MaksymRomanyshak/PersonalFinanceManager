@@ -18,6 +18,7 @@ class App extends Component {
       value: "",
       posts: [],
       searchField: "",
+      isEditing: { status: false, id: "" },
     };
   }
 
@@ -52,7 +53,10 @@ class App extends Component {
     return (
       <Routes>
         <Route path="/" element={<NavigationBar />}>
-          <Route index element={<Home />} />
+          <Route
+            index
+            element={<Home state={this.state} getData={this.getData} />}
+          />
           <Route
             path="categories"
             element={
@@ -64,7 +68,10 @@ class App extends Component {
               />
             }
           />
-          <Route path="transactions" element={<Transactions />} />
+          <Route
+            path="transactions"
+            element={<Transactions state={this.state} getData={this.getData} />}
+          />
         </Route>
       </Routes>
     );

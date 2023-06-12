@@ -1,0 +1,44 @@
+body {
+  /* background-color: #f1faee; */
+}
+
+button {
+  width: 45%;
+}
+
+h3 {
+  text-align: left;
+  margin: 0;
+}
+hr {
+  border: 1px solid #212529;
+  opacity: 70%;
+  border-radius: 5px;
+}
+
+.form-container {
+  display: flex;
+  margin: 2%;
+  flex-direction: column;
+}
+
+.form-btns {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+/* .alert-msg {
+  width: 12%; 
+  animation: alert;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes alert {
+  from {
+    background-color: #fff3cd;
+  }
+  to {
+    background-color: white;
+  }
+} */

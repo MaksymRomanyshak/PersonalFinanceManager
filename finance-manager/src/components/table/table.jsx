@@ -1,7 +1,7 @@
 import { Table } from "react-bootstrap";
 import CategoryItem from "../category-item/categoty-item";
 
-const ExpensesTable = ({ state, deleteData }) => {
+const ExpensesTable = ({ state, deleteData, updateState }) => {
   const filteredPosts = state.posts.filter((el) =>
     el.name.toLowerCase().includes(state.searchField)
   );
@@ -23,6 +23,8 @@ const ExpensesTable = ({ state, deleteData }) => {
             key={category._id}
             category={category}
             deleteData={deleteData}
+            state={state}
+            updateState={updateState}
           />
         ))}
       </Table>

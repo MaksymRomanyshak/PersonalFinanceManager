@@ -7,9 +7,15 @@ const year = currentDate.getFullYear();
 const formattedDate = `${day}.${month}.${year}`;
 
 const dataSchema = new mongoose.Schema({
-  name: String,
+  name: {
+    type: String,
+    default: "New category",
+  },
   body: String,
-  value: String,
+  value: {
+    type: Number,
+    default: 25,
+  },
   date: {
     type: String,
     default: formattedDate,

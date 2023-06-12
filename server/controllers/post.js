@@ -2,10 +2,19 @@
 const Data = require("../models/data");
 
 exports.deleteData = (req, res) => {
-  const elementId = req.params.id;
-  Data.findByIdAndDelete(elementId)
+  const { id } = req.params;
+  Data.findByIdAndDelete(id)
     .then((result) => {
-      res.json({ result });
+      res.json({ delete: result });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.editData = (req, res) => {
+  const { id } = req.params;
+  Data.findByIdAndUpdate(id, req.body, { new: true })
+    .then((result) => {
+      res.json({ put: result });
     })
     .catch((err) => console.log(err));
 };
