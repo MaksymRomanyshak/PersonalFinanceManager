@@ -7,7 +7,7 @@ const ExpensesTable = ({ state, deleteData, updateState }) => {
   );
   if (state.posts.length) {
     return (
-      <Table striped borderless hover>
+      <Table striped borderless hover style={{ margin: "0%" }}>
         <thead>
           <tr>
             <td></td>

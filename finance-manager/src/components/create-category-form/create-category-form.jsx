@@ -1,14 +1,9 @@
-import { useEffect } from "react";
 import axios from "axios";
 
 import { Form, Col, Row, Button, Alert } from "react-bootstrap";
 import "./create-category-form.css";
 
 const CreateCategoryForm = ({ state, updateState, getData }) => {
-  useEffect(() => {
-    getData();
-  }, []);
-
   // https://coolors.co/palette/e63946-f1faee-a8dadc-457b9d-1d3557
 
   const handleChanghe = ({ target }) => {

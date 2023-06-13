@@ -15,7 +15,7 @@ const Transactions = ({ state, getData }) => {
     for (const el of state.posts) {
       sum += Number(el.value);
     }
-    return `TOTAL: ${sum}$`;
+    return <b>TOTAL: {sum}$</b>;
   };
 
   return (

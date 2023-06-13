@@ -1,10 +1,13 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 
 import ExpensesTable from "../../components/table/table";
 import SearchCategoryInput from "../../components/search-category-input/search-category-input";
 import CreateCategoryForm from "../../components/create-category-form/create-category-form";
 
 const Categories = ({ state, updateState, getData, deleteData }) => {
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <Fragment>
       <CreateCategoryForm

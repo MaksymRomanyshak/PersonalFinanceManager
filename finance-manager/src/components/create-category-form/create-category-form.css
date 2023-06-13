@@ -1,7 +1,3 @@
-body {
-  /* background-color: #f1faee; */
-}
-
 button {
   width: 45%;
 }
@@ -18,7 +14,7 @@ hr {
 
 .form-container {
   display: flex;
-  margin: 2%;
+  margin: 1.8%;
   flex-direction: column;
 }
 
