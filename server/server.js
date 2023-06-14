@@ -20,7 +20,7 @@ mongoose.connection.on("error", (err) => {
 });
 
 //bringing routes
-const dataRoutes = require("./routes/post");
+const dataRoutes = require("./routes/apiRoutes");
 
 // midleware
 app.use(morgan("dev"));
