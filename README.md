@@ -1,4 +1,4 @@
-# PersonalFinanceManager
+# Personal Finance Manager
 
 A MERN stack web application.
 
