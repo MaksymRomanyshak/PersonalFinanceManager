@@ -23,7 +23,9 @@ class App extends Component {
   }
 
   updateState = (newState) => {
-    this.setState(newState);
+    this.setState(() => {
+      return newState;
+    });
   };
 
   getData = () => {
@@ -40,7 +42,8 @@ class App extends Component {
   deleteData = (id) => {
     axios
       .delete(`/delete/${id}`)
-      .then(() => {
+      .then((response) => {
+        console.log("data has been deleted:", response.data);
         this.getData();
       })
       .catch((err) => {
@@ -49,7 +52,6 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <Routes>
         <Route path="/" element={<NavigationBar />}>

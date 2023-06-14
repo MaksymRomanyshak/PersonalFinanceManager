@@ -9,12 +9,16 @@ const formattedDate = `${day}.${month}.${year}`;
 const dataSchema = new mongoose.Schema({
   name: {
     type: String,
-    default: "New category",
+    required: "Name is required",
+    maxlength: 15,
   },
-  body: String,
+  body: {
+    type: String,
+    maxlength: 90,
+  },
   value: {
     type: Number,
-    default: 25,
+    required: "Value is required",
   },
   date: {
     type: String,

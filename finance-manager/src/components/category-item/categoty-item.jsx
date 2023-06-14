@@ -3,17 +3,17 @@ import { useEffect } from "react";
 
 const CategoryItem = ({ category, deleteData, updateState, state }) => {
   const { _id, name, body, value, date } = category;
+  const { posts, isEditing } = state;
 
   useEffect(() => {
-    if (state.isEditing.status) {
+    if (isEditing.status) {
       displayValue();
     }
-  }, [state.isEditing]);
+  }, [isEditing]);
 
   const displayValue = () => {
-    const posts = state.posts;
     for (const el of posts) {
-      if (el._id === state.isEditing.id) {
+      if (el._id === isEditing.id) {
         updateState({
           name: el.name,
           body: el.body,

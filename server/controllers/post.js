@@ -12,7 +12,7 @@ exports.deleteData = (req, res) => {
 
 exports.editData = (req, res) => {
   const { id } = req.params;
-  Data.findByIdAndUpdate(id, req.body, { new: true })
+  Data.findByIdAndUpdate(id, req.body)
     .then((result) => {
       res.json({ put: result });
     })

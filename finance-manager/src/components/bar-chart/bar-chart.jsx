@@ -36,19 +36,17 @@ const BarChart = ({ state }) => {
   };
   const chartData = () => {
     const data = [];
-    const b = {};
+    const dateValueObj = {};
 
-    const a = state.posts.map((el) => {
+    const dateValueArr = state.posts.map((el) => {
       return { date: el.date, value: el.value };
     });
-    for (const key of a) {
-      if (b[key.date] === undefined) {
-        b[key.date] = key.value;
-      } else {
-        b[key.date] += key.value;
-      }
+    for (const el of dateValueArr) {
+      dateValueObj[el.date] === undefined
+        ? (dateValueObj[el.date] = el.value)
+        : (dateValueObj[el.date] += el.value);
     }
-    for (const [, value] of Object.entries(b)) {
+    for (const [, value] of Object.entries(dateValueObj)) {
       data.push(value);
     }
     return data.reverse().splice(-7);

@@ -8,6 +8,7 @@ const Categories = ({ state, updateState, getData, deleteData }) => {
   useEffect(() => {
     getData();
   }, []);
+
   return (
     <Fragment>
       <CreateCategoryForm

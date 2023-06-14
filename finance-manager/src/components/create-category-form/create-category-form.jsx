@@ -4,21 +4,19 @@ import { Form, Col, Row, Button, Alert } from "react-bootstrap";
 import "./create-category-form.css";
 
 const CreateCategoryForm = ({ state, updateState, getData }) => {
-  // https://coolors.co/palette/e63946-f1faee-a8dadc-457b9d-1d3557
+  const { name, body, value, isEditing } = state;
 
-  const handleChanghe = ({ target }) => {
+  const handleChange = ({ target }) => {
     const { name, value } = target;
 
     updateState({ [name]: value });
   };
 
-  const submit = (event) => {
-    event.preventDefault();
-
+  const submit = () => {
     const payload = {
-      name: state.name,
-      body: state.body,
-      value: state.value,
+      name: name,
+      body: body,
+      value: value,
     };
 
     axios({
@@ -39,12 +37,12 @@ const CreateCategoryForm = ({ state, updateState, getData }) => {
   const submitEditing = (id) => {
     axios
       .put(`/edit/${id}`, {
-        name: state.name,
-        body: state.body,
-        value: state.value,
+        name: name,
+        body: body,
+        value: value,
       })
-      .then((resposne) => {
-        console.log("data has been updated", resposne.data);
+      .then((response) => {
+        console.log("data has been updated. Old data:", response.data);
         resetUserInputs();
         updateState({ isEditing: { status: false, id: "" } });
         getData();
@@ -62,12 +60,12 @@ const CreateCategoryForm = ({ state, updateState, getData }) => {
     });
   };
 
-  if (state.isEditing.status) {
+  if (isEditing.status) {
     return (
       <Form
         onSubmit={(event) => {
           event.preventDefault();
-          submitEditing(state.isEditing.id);
+          submitEditing(isEditing.id);
         }}
         className="form-container"
       >
@@ -87,10 +85,12 @@ const CreateCategoryForm = ({ state, updateState, getData }) => {
                 type="text"
                 name="name"
                 placeholder="Name"
-                value={state.name}
+                value={name}
                 required
                 maxLength={15}
-                onChange={handleChanghe}
+                onChange={(event) => {
+                  handleChange(event);
+                }}
               />
             </Col>
             <Col>
@@ -99,10 +99,12 @@ const CreateCategoryForm = ({ state, updateState, getData }) => {
                 type="number"
                 name="value"
                 placeholder="Price"
-                value={state.value}
+                value={value}
                 required
                 maxLength={8}
-                onChange={handleChanghe}
+                onChange={(event) => {
+                  handleChange(event);
+                }}
               />
             </Col>
           </Row>
@@ -118,8 +120,10 @@ const CreateCategoryForm = ({ state, updateState, getData }) => {
               placeholder="Description"
               rows={1}
               maxLength={90}
-              value={state.body}
-              onChange={handleChanghe}
+              value={body}
+              onChange={(event) => {
+                handleChange(event);
+              }}
             />
           </Form.Group>
         </div>
@@ -143,7 +147,13 @@ const CreateCategoryForm = ({ state, updateState, getData }) => {
     );
   } else {
     return (
-      <Form onSubmit={submit} className="form-container">
+      <Form
+        onSubmit={(event) => {
+          event.preventDefault();
+          submit();
+        }}
+        className="form-container"
+      >
         <hr
           style={{
             marginTop: "0",
@@ -160,10 +170,12 @@ const CreateCategoryForm = ({ state, updateState, getData }) => {
                 type="text"
                 name="name"
                 placeholder="Name"
-                value={state.name}
+                value={name}
                 required
                 maxLength={15}
-                onChange={handleChanghe}
+                onChange={(event) => {
+                  handleChange(event);
+                }}
               />
             </Col>
             <Col>
@@ -172,10 +184,11 @@ const CreateCategoryForm = ({ state, updateState, getData }) => {
                 type="number"
                 name="value"
                 placeholder="Price"
-                value={state.value}
+                value={value}
                 required
-                maxLength={8}
-                onChange={handleChanghe}
+                onChange={(event) => {
+                  handleChange(event);
+                }}
               />
             </Col>
           </Row>
@@ -191,8 +204,10 @@ const CreateCategoryForm = ({ state, updateState, getData }) => {
               placeholder="Description"
               rows={1}
               maxLength={90}
-              value={state.body}
-              onChange={handleChanghe}
+              value={body}
+              onChange={(event) => {
+                handleChange(event);
+              }}
             />
           </Form.Group>
         </div>
@@ -201,10 +216,12 @@ const CreateCategoryForm = ({ state, updateState, getData }) => {
             ADD CATEGORY
           </Button>
           <Button
-            disabled={state.name || state.value || state.body ? false : true}
+            disabled={name || value || body ? false : true}
             variant="danger"
             className="add-category-btn"
-            onClick={resetUserInputs}
+            onClick={() => {
+              resetUserInputs();
+            }}
           >
             CANCEL
           </Button>
