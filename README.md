@@ -12,4 +12,4 @@ A MERN stack web application.
  
  Overall, this experience has deepened my knowledge and skills in the MERN stack and front-end development practices. 
  I am now more confident in creating web applications that use MongoDB, Express, ReactJS, and Node.js.
- I am also equipped with the ability to handle different types of HTTP requests and incorporate libraries like Axios, Bootstrap, and ChartJS.
+ Also equipped with the ability to handle different types of HTTP requests and incorporate libraries like Axios, Bootstrap, and ChartJS.
